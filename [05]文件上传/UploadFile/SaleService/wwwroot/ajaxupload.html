@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/jquery-form/dist/jquery.form.min.js"></script>
+    <script type="text/javascript">
+
+        function formuploadfile() {
+            $("#myform").ajaxSubmit();
+        }
+
+        function Ajaxuploadfile() {
+            var formdata = new FormData(document.getElementById("myform"));
+
+            $.ajax({
+                type: "POST",
+                url: "/api/files/iform",
+                contentType: false,
+                processData: false,
+                data: formdata,
+                success: function (result) {
+                    alert("success");
+                    $.each(result.resultObject, function (i, filename) {
+                        alert(filename);
+                    });
+                },
+                error: function () {
+                    alert("上传文件出现错误！");
+                }
+            });
+        }
+
+        function AjaxFormDataUploadfile() {
+            var fileUpload = $("#files").get(0);
+            var files = fileUpload.files;
+            var data = new FormData();
+            data.append("Code", "code");
+            for (var i = 0; i < files.length; i++) {
+                data.append("files", files[i]);
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/api/files/iform",
+                contentType: false,
+                processData: false,
+                data: data,
+                success: function (message) {
+                    alert("success");
+                },
+                error: function () {
+                    alert("上传文件出现错误！");
+                }
+            });
+
+        }
+
+        function AjaxuploadfileWithprogress() {
+            var formdata = new FormData(document.getElementById("myform"));           
+
+            $.ajax({
+                type: "POST",
+                url: "/api/files/iform",
+                contentType: false,
+                processData: false,
+                data: formdata,
+                success: function (result) {
+                    alert("success");
+                    $.each(result.resultObject, function (i, filename) {
+                        alert(filename);
+                    });
+                },
+                error: function () {
+                    alert("上传文件出现错误！");
+                },
+                xhr: function () {
+                    var xhr = $.ajaxSettings.xhr();
+                    if (onprogress && xhr.upload) {
+                        xhr.upload.addEventListener("progress", onprogress, false);
+                        return xhr;
+                    }
+                } 
+            });
+        }
+
+
+        function onprogress(evt)
+        {
+            var loaded = evt.loaded;                  //已经上传大小 
+            var tot = evt.total;                      //附件总大小 
+            var per = Math.floor(100 * loaded / tot); //百分比  
+            $("#son").html(per + "%");
+            $("#son").css("width", per + "%");
+        }
+
+    </script>
+    <style type="text/css">
+        #parent {
+            width: 550px;
+            height: 10px;
+            border: 2px solid #09F;
+        }
+
+        #son {
+            width: 0;
+            height: 100%;
+            background-color: #09F;
+            text-align: center;
+            line-height: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <form id="myform" method="post" action="/api/files/iform" enctype="multipart/form-data">
+        <div>
+            <div>
+                <br />
+                <p>表单多个上传文件:</p><br />
+
+                Code:<input type="text" id="Code" name="Code" /> <br /><br />
+                <input type="file" id="files" name="files" multiple /> <br /><br />
+
+                <input type="submit" value="Form Submit" /><br /><br />
+
+                <input type="button" value="Form Upload" onclick="formuploadfile();" /> <br /><br />
+
+                <input id="upload" type="button" value="ajax Upload" onclick="Ajaxuploadfile();" /><br /><br />
+
+                <input id="formupload" type="button" value="Form Data Upload" onclick="AjaxFormDataUploadfile();" /><br /><br />
+
+                <input id="formuploadprogress" type="button" value="Ajax Upload Progress" onclick="AjaxuploadfileWithprogress();" /><br /><br />
+
+                <div id="parent">
+                    <div id="son"></div>
+                </div>
+
+            </div>
+        </div>
+    </form>
+</body>
+</html>
