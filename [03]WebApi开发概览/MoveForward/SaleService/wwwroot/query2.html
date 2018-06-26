@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">      
+    <title>Using jQuery</title>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {          
+
+
+            $("#query1").click(function (event) {     
+
+                var datastr = "{productCode: '3333', productName: '4444',  productNumbers: 6}";
+
+                $.ajax({
+                    url: "api/newproduct/t1?name=1111",
+                    type: "Post",
+                    contentType: "application/json; charset=utf-8",
+                    data: datastr,
+                    success: function (result) {
+                        alert("success");
+                    },
+                    error: function (error) {
+                        alert("出错：" + error.responseText);
+                    }
+                });
+            });
+
+            $("#query2").click(function (event) {
+
+                var datastr = new FormData();
+
+                datastr.append("Code", "111111");
+                datastr.append("Name", "2222");
+                datastr.append("product.ProductCode", "33333");
+                datastr.append("ProductName", "4444");  //取不到值
+
+                $.ajax({
+                    type: "POST",
+                    url: "api/newproduct/t2",
+                    contentType: false,
+                    processData: false,
+                    data: datastr,
+                    success: function (result) {
+                        alert(result);
+                    },
+                    error: function (error) {
+                        alert("出错：" + error.responseText);
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <h1>Query</h1>
+
+    <button id='query1'>Qyery1</button> <br />
+    <button id='query2'>Qyery2</button> <br />
+
+    <form id="myform" action="api/newproduct/t2" method="post" >
+        <div>
+            Code:<input type="text" id="Code" name="Code" /><br />
+            Name:<input type="text" id="Name" name="Name" /><br />
+            productCode:<input type="text" id="ProductCode" name="product.ProductCode" /><br />
+            productName:<input type="text" id="ProductName" name="product.ProductName" /><br />
+            <input type="submit" value="Submit" /><br /><br />
+        </div>
+    </form>
+
+
+</body>
+
+</html>

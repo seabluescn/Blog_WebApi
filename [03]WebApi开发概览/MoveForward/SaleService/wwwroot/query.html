@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>Using jQuery</title>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+
+
+            $("#query").click(function (event) {
+
+                $.ajax({
+                    url: "api/products",
+                    type: "GET",
+                    contentType: "application/xml; charset=utf-8",
+                    headers: {
+                        Accept: "application/xml"
+                    },
+                    success: function (result) {
+                        alert("success");
+                    },
+                    error: function (error) {
+                        alert("出错：" + error.responseText);
+                    }
+                });
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <h1>Query</h1>
+
+    <button id='query'>Qyery</button>
+    <hr />
+
+
+
+</body>
+
+</html>
