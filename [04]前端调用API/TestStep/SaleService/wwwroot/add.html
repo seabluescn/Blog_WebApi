@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>Using Bootstrap</title>
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css" />
+    <script src="lib/jquery/dist/jquery.js"></script>
+    <script src="lib/jquery-form/dist/jquery.form.min.js"></script>
+    <script src="lib/bootstrap/dist/js/bootstrap.js"></script>
+
+    <script>
+        $(document).ready(function () {
+
+            $("#add1").click(function (event) {
+
+                var datastr = "{ 'Code': '2222', 'Name': '33333','Numbers': 0,'user':{'Name':'username'}}";
+
+                $.ajax({
+                    type: "POST",
+                    url: "api/products",
+                    contentType: "application/json;charset=UTF-8",
+                    data: datastr,
+                    success: function (result) {
+                        alert("success");
+                    },
+                    error: function (error) {
+                        alert("出错：" + error.responseText);
+                    }
+                });
+            });
+
+
+            $("#add2").click(function (event) {
+
+                var datastr = new FormData();
+
+                datastr.append("Code", "111111");               
+                datastr.append("product.Code", "3333");
+                datastr.append("product.Name", "4444");
+                datastr.append("product.user.Name", "555555");
+
+                $.ajax({
+                    type: "POST",
+                    url: "api/products",
+                    contentType: false,
+                    processData: false,
+                    data: datastr,
+                    success: function (result) {
+                        alert(result);
+                    },
+                    error: function (error) {
+                        alert("出错：" + error.responseText);
+                    }
+                });
+            });
+
+            $("#add3").click(function (event) {
+
+                $("#myform").ajaxSubmit();
+
+            });
+
+
+        });
+    </script>
+
+</head>
+
+<body>  
+
+   
+    <form id="myform" action="api/products" method="post"  >
+        <div>
+            Code:<input type="text" id="Code" name="Code" /><br />
+            productCode:<input type="text" id="product.Code" name="product.Code" /><br />
+            productName:<input type="text" id="product.Name" name="product.Name" /><br />
+            UserName:<input type="text" id="product.user.Name" name="product.user.Name" /><br />
+            <input type="submit" value="Submit" /><br /><br />
+
+            <button type="button" class="btn btn-success" id="add1">ADD1</button><br /><br />
+            <button type="button" class="btn btn-success" id="add2">ADD2</button><br /><br />
+            <button type="button" class="btn btn-success" id="add3">ADD3</button><br /><br />
+        </div>
+
+    </form>
+
+
+
+</body>
+
+</html>
