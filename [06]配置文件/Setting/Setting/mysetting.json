@@ -1,0 +1,13 @@
+﻿{
+  "ConnString": "MySQL Connect String",  
+  "SystemConfig": {
+    "UploadFile": "d:\\myfiles",
+    "AnnexUrl": "http://192.168.0.177:81/my",
+    "Admin": {
+      "Name": "myadmin",
+      "Age": "131",
+      "Allow": "False"
+    },
+    "DefaultPassword": "654321"
+  }
+}

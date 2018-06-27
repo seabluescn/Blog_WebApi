@@ -1,0 +1,11 @@
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\bin\Debug\netcoreapp2.0\Setting.deps.json
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\bin\Debug\netcoreapp2.0\Setting.runtimeconfig.json
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\bin\Debug\netcoreapp2.0\Setting.runtimeconfig.dev.json
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\bin\Debug\netcoreapp2.0\Setting.dll
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\bin\Debug\netcoreapp2.0\Setting.pdb
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\obj\Debug\netcoreapp2.0\Setting.csproj.CoreCompileInputs.cache
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\obj\Debug\netcoreapp2.0\Setting.AssemblyInfoInputs.cache
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\obj\Debug\netcoreapp2.0\Setting.AssemblyInfo.cs
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\obj\Debug\netcoreapp2.0\Setting.dll
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\obj\Debug\netcoreapp2.0\Setting.pdb
+D:\StepByStep\dotnetCore\WebApi\Step_04\Setting\Setting\obj\Debug\netcoreapp2.0\Setting.csprojResolveAssemblyReference.cache

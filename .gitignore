@@ -1,8 +1,5 @@
 /\[01\]开发环境/NuGet和Bower/.vs
 /\[02\]利用Swagger调试WebApi/SaleServiceWithSwagger/.vs
 /\[03\]WebApi开发概览/MoveForward/.vs
-/\[03\]WebApi开发概览/MoveForward/SaleService/wwwroot/lib
 /\[04\]前端调用API/TestStep/.vs
-/\[04\]前端调用API/TestStep/SaleService/wwwroot/lib
 /\[05\]文件上传/UploadFile/.vs
-/\[05\]文件上传/UploadFile/SaleService/wwwroot/lib
