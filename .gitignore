@@ -3,3 +3,6 @@
 /\[03\]WebApi开发概览/MoveForward/.vs
 /\[04\]前端调用API/TestStep/.vs
 /\[05\]文件上传/UploadFile/.vs
+/\[08\]访问数据库/EFCore/.vs
+/\[08\]访问数据库/MySQL/.vs
+/\[08\]访问数据库/SQLServer/.vs
