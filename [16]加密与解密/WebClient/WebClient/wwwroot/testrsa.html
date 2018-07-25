@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <title>Using jQuery</title>
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="lib/jsencrypt/bin/jsencrypt.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $("#query").click(function (event) {
+
+                //需要加密的信息
+                var pwd = "ghc123456";
+
+                //公钥
+                var publicKey = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtZX5Ov+dIm/AGI85hbEbzUXtCw0MupMar+oePUstRLPFd3DVFH7gLVc7icxWeHEjY6An0sT/nhH4on4iBMgJeJNsgk2+Fxdv2stX223jsTNDn1C0uh9TbuLejslYWCJdliAE/l3O1gwD7/iyaOx9e8pAdm0tM4ynkYtbqQb0FmFFO9QVFDVO5ALMhr1A4+/5J8b1+dAZVOLeqMDlhgOoM2ZvuPRzAyQ2xNZmY8zLgtUquhrq/4UlM5UzYcVtUTJSkaGEN1BUiKqtNXohmtYcH9MF1JxTrKBz5gI+nJSBSFzAA0Svh/9Y3DCsu3+L2En2uLzWkqr7Z03Z1rAIRNrzlwIDAQAB";
+
+                var encrypt = new JSEncrypt();
+                encrypt.setPublicKey(publicKey);
+               
+                var encrypttext = encrypt.encrypt(pwd);
+
+                $("#text").val(encrypttext);
+            });
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <h1>Query</h1>
+
+    <button id='query'>Qyery</button>
+    <textarea id="text"></textarea>
+
+</body>
+
+</html>
